@@ -1,0 +1,35 @@
+{
+  "name": "animated_listview",
+  "version": "0.0.1",
+  "description": "An animated List-View",
+  "main": "index.js",
+  "scripts": {
+    "test": "test-anilivi"
+  },
+  "author": "kpf",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "react": "^15.4.0",
+    "node-jsx": "^0.13.3",
+    "webpack": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+		"css-loader":"^0.26.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-concat": "latest",
+    "gulp-connect": "^5.0.0",
+    "gulp-open": "^2.0.0",
+    "gulp-uglify": "latest",
+    "gulp-util": "^3.0.8",
+    "http": "0.0.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.5",
+		"style-loader":"^0.13.1"
+  }
+}
