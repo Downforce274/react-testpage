@@ -5,20 +5,37 @@ import {
 	Panel,
 	IPanelProperties
 } from "office-ui-fabric-react";
+import {PodcastCard} from './podcastcard.jsx';
 
 export class PodcastApp extends React.Component{
 	constructor(props){
 		super(props);
+		console.log(PodcastCard);
 		this.state = {PanelIsOpen :false};
 		console.log(props);
 	}
 	render(){
 		console.log("podcast");
+		console.log(<PodcastCard/>);
+		let cardPreview = {
+					previewImages:[
+                                                                {
+                                                                        name:"First Test Img"
+                                                                },
+                                                                {
+                                                                        name:"Second Test Img"
+                                                                }
+                                                        ]
+					};
 		var appClass = "podcastApp";
 		return(
 				<div className={appClass}>
 					We could have some Podcasts here
 				<Button onClick={this._onOpenPanelClick.bind(this)}>Open Panel</Button>
+				<PodcastCard
+					preview={cardPreview}
+					cardTitle={"Some Test Title"}
+				/>
 				<Panel
 				headerText={"some Panel"}
 				isBlocking={true}
