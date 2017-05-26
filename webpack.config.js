@@ -1,7 +1,7 @@
 const webpck = require("webpack");
 const path = require("path");
-// const ExtractTextPlugin = require("extract-text-webpack-plugin");
-//
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 // const extractSass = new ExtractTextPlugin({
 // 	fileName: "[name].[contenthash].css"
 // });
@@ -16,25 +16,62 @@ var config = {
 		filename:"bundle.js"
 	},
 	module:{
-		loaders:[
+		/*loaders:[
 			{
 				test:/\.jsx?/,
 				include:dirApp,
-				loader:'babel-loader'
-			}/*,
+				use:'babel-loader'
+			}],*/
+			rules:[
+				{
+					test:/\.jsx?/,
+					use:'babel-loader'
+				},
+				{
+					test:/\.css$/,
+					use:ExtractTextPlugin.extract({
+						use:'css-loader?importLoaders=1'
+					})
+				},
+				{
+					test:/\.(sass|scss)$/,
+					use: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+				}
+			]
+			/*
 			{
-				test:/\.scss?/,
-				loader:extractSass.extract(['css-loader', 'less-loader'])
-			},
-			{
-				test:/\.css?/,
-				loader:extractSass.extract(['css-loader'])
-			}*/
-		]
-	}/*,
+				test:/\.ms[ac]ss$/,
+				use:[{
+					loader: 'style-loader',
+					options: { sourceMap: true }
+				}, {
+					loader: 'css-loader',
+					options:{
+						localIdentName: '[sha512:hash:base32]-[name]-[local]',
+						modules:true,
+						sourceMap:true
+					}
+				}, {
+					loader:'postcss-loader',
+					options: { sourceMap: true }
+				}, {
+					loader: 'sass-loader',
+					options: {
+						includePaths: config,
+						sourceMap :true
+					}
+				}
+			]
+		}*/
+
+		//]
+	},
 	plugins:[
-		extractSass
-	]*/
+		new ExtractTextPlugin({
+			filename:'[name].bundle.css',
+			allChunks:true,
+		}),
+	],
 };
 
 module.exports = config;
